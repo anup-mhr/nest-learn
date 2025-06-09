@@ -16,7 +16,10 @@ import { APP_GUARD } from '@nestjs/core';
     BookmarkModule,
     PrismaModule,
     FilesModule,
-    ThrottlerModule.forRoot([{ ttl: 60000, limit: 3 }]),
+    ThrottlerModule.forRoot([
+      { name: 'short', ttl: 60000, limit: 3 },
+      { name: 'long', ttl: 60000, limit: 5 },
+    ]),
   ],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],
 })
