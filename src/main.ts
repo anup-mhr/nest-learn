@@ -4,6 +4,14 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.enableCors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  });
+
+  // set global prefix for every api
+  app.setGlobalPrefix('api');
   // use global pipes for dto validation
   app.useGlobalPipes(
     new ValidationPipe({
