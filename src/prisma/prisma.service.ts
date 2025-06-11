@@ -17,7 +17,7 @@ export class PrismaService extends PrismaClient {
   // for cleaning db after e2e testing
   cleanDb() {
     return this.$transaction([
-      this.bookmark.deleteMany(),
+      // this.bookmark.deleteMany(),
       this.user.deleteMany(),
     ]);
   }
